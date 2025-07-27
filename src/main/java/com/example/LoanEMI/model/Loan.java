@@ -17,6 +17,9 @@ public class Loan {
     private double principal;
     private double rate;
     private int tenure; // in months
+    private double emi;
+    private double totalAmount;
+    private double totalInterest;
 
     @ManyToOne
     @JoinColumn(name = "user_id")

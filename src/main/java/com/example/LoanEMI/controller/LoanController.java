@@ -13,10 +13,16 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/loans")
 @RequiredArgsConstructor
+@CrossOrigin(origins = "http://localhost:3000")
 public class LoanController {
 
     private final LoanService loanService;
     private final UserService userService;
+
+    @PostMapping("/calculate")
+    public LoanDTO calculateEMI(@RequestBody LoanDTO dto) {
+        return loanService.calculateEMI(dto);
+    }
 
     @PostMapping
     public String applyLoan(@RequestBody LoanDTO dto) {
@@ -27,7 +33,7 @@ public class LoanController {
     }
 
     @GetMapping
-    public List<?> getMyLoans() {
+    public List<LoanDTO> getMyLoans() {
         String username = SecurityContextHolder.getContext().getAuthentication().getName();
         User user = userService.findByUsername(username);
         return loanService.getUserLoans(user);
