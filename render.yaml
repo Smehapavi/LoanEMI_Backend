@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: loan-emi-backend
+    env: java
+    plan: free
+    buildCommand: ./mvnw clean package -DskipTests
+    startCommand: java -jar target/loan-emi-calculator-0.0.1-SNAPSHOT.jar
+    envVars:
+      - key: SPRING_PROFILES_ACTIVE
+        value: prod
+      - key: SPRING_DATASOURCE_URL
+        value: jdbc:mysql://${MYSQL_HOST}:${MYSQL_PORT}/${MYSQL_DATABASE}?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+      - key: SPRING_DATASOURCE_USERNAME
+        value: ${MYSQL_USERNAME}
+      - key: SPRING_DATASOURCE_PASSWORD
+        value: ${MYSQL_PASSWORD}
+      - key: SERVER_PORT
+        value: 10000
+    healthCheckPath: /api/loan/health 
