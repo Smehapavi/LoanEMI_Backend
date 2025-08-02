@@ -1,5 +1,6 @@
 com\loanemi\LoanEmiCalculatorApplication.class
 com\loanemi\dto\LoanRequest.class
+com\loanemi\LoanEmiCalculatorApplication$1.class
 com\loanemi\service\LoanCalculationService.class
 com\loanemi\controller\LoanCalculationController.class
 com\loanemi\model\LoanCalculation.class

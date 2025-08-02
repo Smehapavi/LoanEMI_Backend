@@ -7,7 +7,7 @@ services:
     startCommand: java -jar target/loan-emi-calculator-0.0.1-SNAPSHOT.jar
     envVars:
       - key: SPRING_PROFILES_ACTIVE
-        value: prod
+        value: render
       - key: SPRING_DATASOURCE_URL
         value: jdbc:mysql://${MYSQL_HOST}:${MYSQL_PORT}/${MYSQL_DATABASE}?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
       - key: SPRING_DATASOURCE_USERNAME
@@ -16,4 +16,6 @@ services:
         value: ${MYSQL_PASSWORD}
       - key: SERVER_PORT
         value: 10000
+      - key: JAVA_OPTS
+        value: -Xmx512m -Xms256m
     healthCheckPath: /api/loan/health 

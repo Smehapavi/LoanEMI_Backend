@@ -13,7 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/loan")
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = {"http://localhost:3000", "https://loan-emi-frontend.onrender.com", "*"})
 public class LoanCalculationController {
     
     @Autowired
